@@ -8,7 +8,6 @@ import Error from '../404';
 import { BB } from '../../actions';
 class Main extends React.Component {
     render() {
-        console.log(this.props.todos)
         return (
             <div className="main" >
                 <Switch>
@@ -17,19 +16,9 @@ class Main extends React.Component {
                     <Route path="/contact" component={Contact} />
                     <Route component={Error} />
                 </Switch>
-                {this.props.todos && this.props.todos.map((i, key) =>
-                    <p key={key}>{i}</p>)
-                }
-                <button onClick={this.props.bb} >Bb</button>
             </div>
         );
     }
 }
-const mapStateToProps = (state, ownProps) => ({
-    todos: [...state.todos]
-})
-const mapDispatchToProps = dispatch => ({
-    bb: () => { dispatch(BB()) }
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default(Main);
